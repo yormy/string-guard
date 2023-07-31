@@ -2,97 +2,67 @@
 
 namespace Yormy\StringGuard\Services;
 
-/*
-'example.co*' => [
-    'conditions' => [
-        'methods' => ['post', 'de*']
-        'days' => ['sund', 'friday']
-    ],
-    'data' = [],
-]
- */
-
-use Yormy\StringGuard\Exceptions\InvalidConfigException;
+use Yormy\StringGuard\DataObjects\StringGuardConfig;
 
 class StringGuard
 {
-    public static function isIncluded(string $stringToCheck, string $method, array $filterConfig, bool $defaultIncluded = true): bool
+    public static function isIncluded(string $stringToCheck, array $conditionsTest, array $filterConfig): bool
+    {
+        return self::testInclude($stringToCheck, $conditionsTest, $filterConfig, false);
+    }
+
+    public static function isIncludedOrUnspecified(string $stringToCheck, array $conditionsTest, array $filterConfig): bool
+    {
+        return self::testInclude($stringToCheck, $conditionsTest, $filterConfig, true);
+    }
+
+    public static function getData(string $stringToCheck, array $conditionsTest, array $filterConfig): array
+    {
+        $configValue = [];
+        // if not specified, then there is no data
+        $found =  self::testInclude($stringToCheck, $conditionsTest, $filterConfig, false, $configValue);
+        if ($found) {
+            return $configValue['ADDITIONALS'];
+        }
+        return [];
+    }
+
+    private static function testInclude(string $stringToCheck, array $conditionsTest, array $filterConfig, bool $defaultIncluded = true, array &$configFound = []): bool
     {
         $stringToCheck = strtoupper($stringToCheck);
-        $method = strtoupper($method);
+        $config = StringGuardConfig::fromArray($filterConfig);
 
-        // validate config
-        $includes = null;
-        if (isset($filterConfig['include'])) {
-            $includes = self::upperCase($filterConfig['include']);
-        }
-
-        $excludes = null;
-        if (isset($filterConfig['exclude'])) {
-            $excludes = self::upperCase($filterConfig['exclude']);
-        }
-
-        $asExcluded = self::specifiedAsExclude($excludes, $stringToCheck, $method);
+        $asExcluded = self::specified($config->getExcludes(), $stringToCheck, $conditionsTest, $configFound);
         if ($asExcluded === true) {
             return false;
         }
 
-        $asIncluded = self::specifiedAsInclude($includes, $stringToCheck, $method);
+        $asIncluded = self::specified($config->getIncludes(), $stringToCheck, $conditionsTest, $configFound);
         if ($asIncluded === true) {
             return true;
         }
-//        dd('default');
+
         return $defaultIncluded;
-//
-//        return true; // how to deal with non specced urls
-////        foreach ($includes as $urlConfig) {
-////            foreach ($urlConfig as $url => $data) {
-////                $urlFound = fnmatch($url, $urlToCheck);
-////                if ($urlFound) {
-////                    $specifiedMethods = self::getMethods($data);
-////                    $methodFound = self::isIncludedMethod($method, $specifiedMethods);
-////                    return $methodFound;
-////                }
-////            }
-////        }
-//        dd('not specced');
-//        return false;
     }
 
-
-
-
-    private static function specifiedAsExclude(array $excludes, string $urlToCheck, string $method)
+    private static function specified(array $includes, string $stringToCheck, array $conditionsTest, array &$configFound = []): bool
     {
-        foreach ($excludes as $urlConfig) {
-            foreach ($urlConfig as $url => $data) {
-                $urlFound = fnmatch($url, $urlToCheck);
-                if ($urlFound) {
-                    return $urlFound;
-//                    $specifiedMethods = self::getMethods($data);
-//                    $methodFound = self::isIncludedMethod($method, $specifiedMethods);
-//                    if ($methodFound) {
-//                        return false; // This url:method is specified as excluded, return immediately to override includes
-//                    }
-                }
-            }
-        }
-    }
-
-
-    private static function specifiedAsInclude(array $includes, string $stringToCheck, string $method)
-    {
+        $conditionMatch = false;
         foreach ($includes as $urlConfig) {
             foreach ($urlConfig as $url => $data) {
                 $urlFound = fnmatch($url, $stringToCheck);
-                return $urlFound;
-//                if ($urlFound) {
-//                    $specifiedMethods = self::getMethods($data);
-//                    $methodFound = self::isIncludedMethod($method, $specifiedMethods);
-//                    return $methodFound;
-//                }
+                if ($urlFound) {
+
+                    $conditionFound = self::conditionMatchFound($data['CONDITIONS'],$conditionsTest);
+                    if ($conditionFound) {
+                        $conditionMatch = true;
+                        $configFound = $data;
+                    }
+                }
             }
         }
+
+        return $conditionMatch;
     }
 
     private static function upperCase(array $values): array
@@ -101,5 +71,35 @@ class StringGuard
         $upper = strtoupper($json);
 
         return json_decode($upper, true);
+    }
+
+    private static function conditionMatchFound(array $config, array $toTest): bool
+    {
+        $config = self::upperCase($config);
+        $toTest = self::upperCase($toTest);
+
+        if (empty($toTest) || reset($toTest) === '*') {
+            return true;
+        }
+
+        foreach ($config as $configName => $configValues)
+        {
+            if (isset($toTest[$configName])) {
+                $valueToTest = $toTest[$configName];
+
+                foreach ($configValues as $configValue) {
+                    try {
+                        $found = fnmatch($configValue, $valueToTest);
+                    } catch (\Throwable $e) {
+                        dd($valueToTest);
+                    }
+                    if ($found) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 }

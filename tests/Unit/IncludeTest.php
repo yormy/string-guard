@@ -17,13 +17,14 @@ class IncludeTest extends TestCase
 
     /**
      * @test
+     * @group StringGuard
      */
     public function IncludeSpecified_Match_Included(): void
     {
-        $included = StringGuard::isIncluded('include_x', 'post', $this->config);
+        $included = StringGuard::isIncluded('include_x', [], $this->config);
         $this->assertTrue($included);
 
-        $included = StringGuard::isIncluded('include_', 'post', $this->config);
+        $included = StringGuard::isIncluded('include_', [], $this->config);
         $this->assertTrue($included);
     }
 
@@ -32,7 +33,7 @@ class IncludeTest extends TestCase
      */
     public function IncludeSpecified_UnMatchExclude_Excluded(): void
     {
-        $included = StringGuard::isIncluded('inclu', 'post', $this->config, false);
+        $included = StringGuard::isIncluded('inclu', [], $this->config, false);
         $this->assertFalse($included);
     }
 
@@ -41,7 +42,7 @@ class IncludeTest extends TestCase
      */
     public function IncludeSpecified_UnMatchInclude_Included(): void
     {
-        $included = StringGuard::isIncluded('inclu', 'post', $this->config, true);
+        $included = StringGuard::isIncludedOrUnspecified('inclu', [], $this->config);
         $this->assertTrue($included);
     }
 
@@ -50,7 +51,7 @@ class IncludeTest extends TestCase
      */
     public function ExcludeSpecified_Match_Excluded(): void
     {
-        $included = StringGuard::isIncluded('exclude_s', 'post', $this->config);
+        $included = StringGuard::isIncluded('exclude_s', [], $this->config);
 
         $this->assertFalse($included);
     }
@@ -60,7 +61,7 @@ class IncludeTest extends TestCase
      */
     public function ExcludeSpecified_UnMatchExclude_Excluded(): void
     {
-        $included = StringGuard::isIncluded('excie', 'post', $this->config, false);
+        $included = StringGuard::isIncluded('excie', [], $this->config);
 
         $this->assertFalse($included);
     }
@@ -70,7 +71,7 @@ class IncludeTest extends TestCase
      */
     public function ExcludeSpecified_UnMatchInclude_Included(): void
     {
-        $included = StringGuard::isIncluded('excie', 'post', $this->config, true);
+        $included = StringGuard::isIncludedOrUnspecified('excie', [], $this->config);
 
         $this->assertTrue($included);
     }
@@ -80,10 +81,10 @@ class IncludeTest extends TestCase
     {
         return [
             'include' => [
-                StringGuardConfig::make('include_*', ['post', 'delete']),
+                StringGuardConfig::make('include_*', [[], 'delete']),
             ],
             'exclude' => [
-                StringGuardConfig::make('exclude_*', ['post', 'delete']),
+                StringGuardConfig::make('exclude_*', [[], 'delete']),
             ]
         ];
 
