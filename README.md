@@ -5,7 +5,7 @@
 
 # String guard
 
-# [Click for Documentation](https://yormy.github.io/string-guard/)
+# [Click for Documentation](https://yormy.github.io/string-guard/docs/)
 
 ## Security Vulnerabilities
 [Report security issues](https://yormy.github.io/string-guard/general/report_security.html)

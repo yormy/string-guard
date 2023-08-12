@@ -14,7 +14,7 @@ export default defineConfig({
       provider: 'local'
     },
     nav: [
-      { text: 'Home', link: '/' },
+      { text: 'Home', link: '/docs/' },
       { text: 'Guide', link: '/docs/v1/introduction/what-is-string-guard' },
     ],
 
