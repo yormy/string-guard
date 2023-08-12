@@ -17,9 +17,29 @@ class UrlGuardTest extends TestCase
         $this->config = $this->makeConfig();
     }
 
+
     /**
      * @test
      * @group xxx
+     */
+    public function ConfigMissingMethod_Accept(): void
+    {
+        $config = [
+            'include' => [
+                UrlGuardConfig::make('include_*'),
+            ],
+            'exclude' => [
+                UrlGuardConfig::make('exclude_*'),
+            ]
+        ];
+
+        $included = UrlGuard::isIncluded('include_x', 'post', $config);
+        $this->assertTrue($included);
+    }
+
+    /**
+     * @test
+     * @group StringGuard
      */
     public function UrlIncludeSpecified_Match_Included(): void
     {
