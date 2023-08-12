@@ -6,7 +6,7 @@ hero:
   text: ""
   tagline: String-Guard
   image:
-      src: /yormy.png
+      src: /docs/public/yormy.png
       alt: String-Guard
   actions:
     - theme: brand
