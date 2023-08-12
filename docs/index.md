@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /v1/introduction/what-is-string-guard
+      link: docs/v1/introduction/what-is-string-guard
     - theme: alt
       text: View on GitHub
       link: https://github.com/yormy/string-guard/

@@ -15,42 +15,42 @@ export default defineConfig({
     },
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/v1/introduction/what-is-string-guard' },
+      { text: 'Guide', link: '/docs/v1/introduction/what-is-string-guard' },
     ],
 
     sidebar: [
       {
         text: 'Introduction',
         items: [
-          { text: 'What is String Guard', link: '/v1/introduction/what-is-string-guard' },
-          { text: 'Definitions', link: '/v1/definitions.md' },
-          { text: 'Need Support?', link: '/general/support/support-me' },
+          { text: 'What is String Guard', link: '/docs/v1/introduction/what-is-string-guard' },
+          { text: 'Definitions', link: '/docs/v1/definitions.md' },
+          { text: 'Need Support?', link: '/docs/general/support/support-me' },
         ]
       },
       {
         text: 'Getting Started',
         items: [
-          { text: 'Installation', link: '/v1/guide/installation' },
-          { text: 'Basic Setup', link: '/v1/guide/basic/setup' },
-          { text: 'Basic Configuration', link: '/v1/guide/basic/configuration' },
-          { text: 'Frontend', link: '/v1//guide/basic/frontend' },
+          { text: 'Installation', link: '/docs/v1/guide/installation' },
+          { text: 'Basic Setup', link: '/docs/v1/guide/basic/setup' },
+          { text: 'Basic Configuration', link: '/docs/v1/guide/basic/configuration' },
+          { text: 'Frontend', link: '/docs/v1//guide/basic/frontend' },
         ]
       },
 
       { text: 'Contributing', items: [
-          { text: 'Report Security Issues', link: '/general/report_security' },
-          { text: 'Roadmap', link: '/general/roadmap' },
-          { text: 'License', link: '/general/license' },
-          { text: 'Change log', link: '/general/changelog' },
-          { text: 'Contributing', link: '/general/contributing' },
-          { text: 'Code of Conduct', link: '/general/code_of_conduct' },
-          { text: 'Credits', link: '/general/credits' },
+          { text: 'Report Security Issues', link: '/docs/general/report_security' },
+          { text: 'Roadmap', link: '/docs/general/roadmap' },
+          { text: 'License', link: '/docs/general/license' },
+          { text: 'Change log', link: '/docs/general/changelog' },
+          { text: 'Contributing', link: '/docs/general/contributing' },
+          { text: 'Code of Conduct', link: '/docs/general/code_of_conduct' },
+          { text: 'Credits', link: '/docs/general/credits' },
         ]},
 
       { text: 'Contact', items: [
-          { text: 'Contact', link: '/general/contact' },
-          { text: 'Support', link: '/general/support/support-me' },
-          { text: 'Donations', link: '/general/support/donations' },
+          { text: 'Contact', link: '/docs/general/contact' },
+          { text: 'Support', link: '/docs/general/support/support-me' },
+          { text: 'Donations', link: '/docs/general/support/donations' },
         ]},
 
     ],
