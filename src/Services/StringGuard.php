@@ -91,7 +91,12 @@ class StringGuard
                     try {
                         $found = fnmatch($configValue, $valueToTest);
                     } catch (\Throwable $e) {
-                        dd($valueToTest);
+                        if (is_array($configValue)) {
+                            $message = 'configValue cannot be an array: '. json_encode($configValue);
+                            $message .= 'It might be that you passed additional data as second argument instead of third';
+                            throw new \Exception($message);
+                        }
+                        throw $e;
                     }
                     if ($found) {
                         return true;
