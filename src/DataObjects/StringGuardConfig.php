@@ -8,9 +8,9 @@ use Yormy\StringGuard\Exceptions\InvalidConfigException;
 
 class StringGuardConfig
 {
-    private $includes;
+    private array $includes;
 
-    private $excludes;
+    private array $excludes;
 
     public static function make(string $string, array $conditions = [], array $data = []): array
     {
@@ -45,12 +45,12 @@ class StringGuardConfig
         return $object;
     }
 
-    public function getIncludes()
+    public function getIncludes(): array
     {
         return $this->includes;
     }
 
-    public function getExcludes()
+    public function getExcludes(): array
     {
         return $this->excludes;
     }
