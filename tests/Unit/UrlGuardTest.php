@@ -2,7 +2,6 @@
 
 namespace Yormy\StringGuard\Tests\Unit;
 
-use Yormy\StringGuard\DataObjects\StringGuardConfig;
 use Yormy\StringGuard\DataObjects\UrlGuardConfig;
 use Yormy\StringGuard\Services\StringGuard;
 use Yormy\StringGuard\Services\UrlGuard;
@@ -17,7 +16,6 @@ class UrlGuardTest extends TestCase
         $this->config = $this->makeConfig();
     }
 
-
     /**
      * @test
      * @group xxx
@@ -30,7 +28,7 @@ class UrlGuardTest extends TestCase
             ],
             'exclude' => [
                 UrlGuardConfig::make('exclude_*'),
-            ]
+            ],
         ];
 
         $included = UrlGuard::isIncluded('include_x', 'post', $config);
@@ -73,7 +71,7 @@ class UrlGuardTest extends TestCase
             ],
             'exclude' => [
                 UrlGuardConfig::make('exclude_*', ['post', 'delete'], $data),
-            ]
+            ],
         ];
 
     }

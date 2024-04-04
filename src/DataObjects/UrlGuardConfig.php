@@ -11,6 +11,7 @@ class UrlGuardConfig extends StringGuardConfig
         }
 
         $urlConditions = ['methods' => $conditions];
+
         return parent::make($string, $urlConditions, $data);
     }
 }

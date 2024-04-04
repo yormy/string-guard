@@ -7,7 +7,7 @@ use Yormy\StringGuard\Services\ApiResponseService;
 
 class StringGuardFacade extends Facade
 {
-//    protected static function getFacadeAccessor() {
-//        return ApiResponseService::class;
-//    }
+    //    protected static function getFacadeAccessor() {
+    //        return ApiResponseService::class;
+    //    }
 }

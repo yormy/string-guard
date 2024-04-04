@@ -7,11 +7,12 @@ use Yormy\StringGuard\Exceptions\InvalidConfigException;
 class StringGuardConfig
 {
     private $includes;
+
     private $excludes;
 
     public static function make(string $string, array $conditions = [], array $data = []): array
     {
-        if (!$string) {
+        if (! $string) {
             throw new InvalidConfigException('Guarded String must be specified');
         }
 
@@ -27,12 +28,12 @@ class StringGuardConfig
 
     public static function fromArray(array $config): StringGuardConfig
     {
-        $object =  new StringGuardConfig();
+        $object = new StringGuardConfig();
 
         if (isset($config['include'])) {
             $object->includes = self::upperCase($config['include']);
         } else {
-            throw new InvalidConfigException('Include must be specified, use ['*'] to include all');
+            throw new InvalidConfigException('Include must be specified, use [' * '] to include all');
         }
 
         if (isset($config['exclude'])) {
