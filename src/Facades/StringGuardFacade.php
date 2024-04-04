@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yormy\StringGuard\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Yormy\StringGuard\Services\ApiResponseService;
 
 class StringGuardFacade extends Facade
 {

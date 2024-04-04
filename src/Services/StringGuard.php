@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yormy\StringGuard\Services;
 
 use Yormy\StringGuard\DataObjects\StringGuardConfig;
@@ -53,7 +55,6 @@ class StringGuard
             foreach ($urlConfig as $url => $data) {
                 $urlFound = fnmatch($url, $stringToCheck);
                 if ($urlFound) {
-
                     $conditionFound = self::conditionMatchFound($data['CONDITIONS'], $conditionsTest);
                     if ($conditionFound) {
                         $conditionMatch = true;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yormy\StringGuard\DataObjects;
 
 class UrlGuardConfig extends StringGuardConfig
