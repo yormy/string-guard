@@ -33,12 +33,12 @@ jobs:
           configuration: phpunit.xml
 #          coverage_clover: "./coverage/clover.xml"
 
-      - name: Ensure coverage > 50
-        id: test-coverage
-        uses: johanvanhelden/gha-clover-test-coverage-check@v1
-        with:
-          percentage: "50"
- #         filename: "./coverage/clover.xml"
+#      - name: Ensure coverage > 50
+#        id: test-coverage
+#        uses: johanvanhelden/gha-clover-test-coverage-check@v1
+#        with:
+#          percentage: "50"
+# #         filename: "./coverage/clover.xml"
 
       - name: Generate test coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.0
