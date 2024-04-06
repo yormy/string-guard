@@ -68,7 +68,7 @@ jobs:
 #        run: "php badges.php"
 
       - name: php
-        run: "wget https://img.shields.io/badge/coverage-20%25-blue -O badges/coverage.svg"
+        run: "wget https://img.shields.io/badge/test_badge_coverage-20%25-blue -O badges/coverage.svg"
 
       - name: upload
         # Commit all changed files back to the repository
