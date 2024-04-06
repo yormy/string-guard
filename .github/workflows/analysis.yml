@@ -68,7 +68,7 @@ jobs:
 #        run: "php badges.php"
 
       - name: php
-        run: "wget https://img.shields.io/badge/any_text-you_like-blue -O x.svg"
+        run: "wget https://img.shields.io/badge/any_text-you_like-blue -O badges/x.svg"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
