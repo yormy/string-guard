@@ -1,44 +1,10 @@
-#name: analysis
-#
-#on: [push]
-#
-#jobs:
-##  phpstan:
-##    runs-on: ubuntu-latest
-##
-##    steps:
-##      - name: Checkout repository
-##        uses: actions/checkout@v3
-##
-##      - name: Cache Composer dependencies
-##        uses: actions/cache@v3
-##        with:
-##          path: /tmp/composer-cache
-##          key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
-##
-##      - name: Installing dependencies
-##        uses: php-actions/composer@v6
-##        with:
-##          php_version: 8.2
-##          php_extensions: "json zip sodium pcntl bcmath"
-##
-##      - name: Setup PHP
-##        uses: shivammathur/setup-php@v2
-##        with:
-##          php-version: 8.2
-##
-##      - name: Prepare cache
-##        run: "sudo chmod -R 777 vendor/orchestra/testbench-core/laravel/bootstrap/cache"
-##
-##      - name: stan
-##        run: "./vendor/bin/phpstan analyse -c phpstan.conf.neon --memory-limit=2G"
-#
-#  insights:
+name: analysis
+
+on: [push]
+
+jobs:
+#  phpstan:
 #    runs-on: ubuntu-latest
-#    permissions:
-#      # Give the default GITHUB_TOKEN write permission to commit and push the
-#      # added or changed files to the repository.
-#      contents: write
 #
 #    steps:
 #      - name: Checkout repository
@@ -54,26 +20,60 @@
 #        uses: php-actions/composer@v6
 #        with:
 #          php_version: 8.2
-#          php_extensions: "zip"
+#          php_extensions: "json zip sodium pcntl bcmath"
 #
 #      - name: Setup PHP
 #        uses: shivammathur/setup-php@v2
 #        with:
 #          php-version: 8.2
 #
-#      - name: insights
-#        run: "sudo ./vendor/bin/testbench insights -v --min-quality=90 --min-complexity=66 --min-architecture=95 --min-style=95 --format=json > phpinsights.json"
+#      - name: Prepare cache
+#        run: "sudo chmod -R 777 vendor/orchestra/testbench-core/laravel/bootstrap/cache"
 #
-##      - name: php
-##        run: "php badges.php"
-##
-##      - name: php
-##        run: "wget https://img.shields.io/badge/test_badge_coverage-20%25-blue -O badges/coverage.svg"
+#      - name: stan
+#        run: "./vendor/bin/phpstan analyse -c phpstan.conf.neon --memory-limit=2G"
+
+  insights:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
+
+      - name: Installing dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: 8.2
+          php_extensions: "zip"
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+
+      - name: insights
+        run: "sudo ./vendor/bin/testbench insights -v --min-quality=90 --min-complexity=66 --min-architecture=95 --min-style=95 --format=json > phpinsights.json"
+
+#      - name: php
+#        run: "php badges.php"
 #
-##      - name: upload
-##        # Commit all changed files back to the repository
-##        uses: stefanzweifel/git-auto-commit-action@v5
-##        with:
-##          commit_message: Badges
-#
-#
+#      - name: php
+#        run: "wget https://img.shields.io/badge/test_badge_coverage-20%25-blue -O badges/coverage.svg"
+
+#      - name: upload
+#        # Commit all changed files back to the repository
+#        uses: stefanzweifel/git-auto-commit-action@v5
+#        with:
+#          commit_message: Badges
+
+

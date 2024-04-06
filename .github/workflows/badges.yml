@@ -1,6 +1,10 @@
 name: badge
 
-on: [push]
+on:
+  workflow_run:
+    workflows: ["analysis"]
+    types:
+      - completed
 
 jobs:
   deploy:
