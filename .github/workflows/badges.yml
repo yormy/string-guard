@@ -38,7 +38,7 @@ jobs:
         with:
           workflow: analysis.yml
           name: phpinsights
-          path: phpinsights
+          path: badges
 
 
       #      - name: Download test results
