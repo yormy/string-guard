@@ -29,7 +29,7 @@ jobs:
         with:
           workflow: analysis.yml
           name: phpinsights
-          path: ./badges/phpinsights
+          path: phpinsights
 #
 #      - name: Installing dependencies
 #        uses: php-actions/composer@v6
