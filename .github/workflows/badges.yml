@@ -7,6 +7,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
+
+      - name: Installing dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: 8.2
+          php_extensions: "zip"
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
