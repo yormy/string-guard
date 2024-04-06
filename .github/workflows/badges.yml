@@ -2,7 +2,7 @@ name: Badges
 
 on:
   workflow_run:
-    workflows: ["Analysis", "Testing"]
+    workflows: ["Analysis"]
     types:
       - completed
 
