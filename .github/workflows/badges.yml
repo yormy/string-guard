@@ -21,7 +21,7 @@ jobs:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
       contents: write
-      #actions: read
+      actions: read
 
     steps:
 #      - name: Download math result for job 1
@@ -32,16 +32,12 @@ jobs:
 #      - name: 'Unzip artifact'
 #        run: unzip phpinsights.zip
 #
-#      - name: get
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: phpinsights
-#          path: badges
-#          github-token: ${{ secrets.GITHUB_TOKEN }}
-#          # The id of the workflow run where the desired download artifact was uploaded from.
-#          # If github-token is specified, this is the run that artifacts will be downloaded from.
-#          # Optional. Default is ${{ github.run_id }}
-#          run-id: ${{ phpinsights_id }}
+
+      - name: get
+        run: |
+          gh run download --repo "${{ github.repository}}" --name phpinsights --dir . "${{ github.run_id }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #
 #      - name: Checkout repository
 #        uses: actions/checkout@v3
