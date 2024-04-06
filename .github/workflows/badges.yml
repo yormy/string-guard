@@ -7,10 +7,19 @@ on:
       - completed
 
 jobs:
+  #  run_on_workflow_a_success:
+  #    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      - name: Run on workflow A success
+  #        run: echo "Workflow A completes successfully"
+
   deploy:
     runs-on: ubuntu-latest
 
     permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
       contents: write
       actions: read
 
@@ -30,13 +39,26 @@ jobs:
           workflow: analysis.yml
           name: phpinsights
           path: phpinsights
-#
-#      - name: Installing dependencies
-#        uses: php-actions/composer@v6
-#        with:
-#          php_version: 8.2
-#          php_extensions: "zip"
-#
+
+
+      #      - name: Download test results
+      #        env:
+      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #        run: gh run download "$GITHUB_RUN_ID" --dir "$RUNNER_TEMP/phpinsights"
+      #
+      #      - name: get
+      #        run: |
+      #          gh run download --repo "${{ github.repository}}" --name phpinsights --dir . "${{ github.run_id }}"
+      #        env:
+      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      #
+      #      - name: Installing dependencies
+      #        uses: php-actions/composer@v6
+      #        with:
+      #          php_version: 8.2
+      #          php_extensions: "zip"
+      #
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -49,5 +71,5 @@ jobs:
         # Commit all changed files back to the repository
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          file_pattern: '*.svg *.json'
+          file_pattern: '*.svg *.txt *.json'
           commit_message: Badges
