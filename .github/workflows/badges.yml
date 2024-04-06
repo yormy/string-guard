@@ -43,15 +43,22 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
 
       - name: Download test results
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh run download "$GITHUB_RUN_ID" --dir "$RUNNER_TEMP/phpinsights"
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: phpinsights
+          workflow: ${{ github.eve.t.workflow_run.workflow_id }}
 
-      - name: get
-        run: |
-          gh run download --repo "${{ github.repository}}" --name phpinsights --dir . "${{ github.run_id }}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#      - name: Download test results
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        run: gh run download "$GITHUB_RUN_ID" --dir "$RUNNER_TEMP/phpinsights"
+#
+#      - name: get
+#        run: |
+#          gh run download --repo "${{ github.repository}}" --name phpinsights --dir . "${{ github.run_id }}"
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #
 #      - name: Installing dependencies
