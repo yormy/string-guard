@@ -61,4 +61,12 @@ jobs:
       - name: php
         run: "php badges.php"
 
+      - name: php
+        run: "https://img.shields.io/badge/any_text-you_like-blue -P badges/like.svg"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: badges/like.svg
+
 
