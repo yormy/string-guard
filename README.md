@@ -1,5 +1,5 @@
 # String Guard
-![alt text](/badges/coverage.svg)
+![coverage](/badges/coverage.svg)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/yormy/string-guard.svg?style=flat-square)](https://packagist.org/packages/yormy/string-guard)
 [![Total Downloads](https://img.shields.io/packagist/dt/yormy/string-guardsvg?style=flat-square)](https://packagist.org/packages/yormy/string-guard)
