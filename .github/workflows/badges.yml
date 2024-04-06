@@ -27,11 +27,11 @@ jobs:
 #      - name: 'Unzip artifact'
 #        run: unzip phpinsights.zip
 
-        uses: actions/download-artifact@v4
-        with:
-          name: phpinsights
-          path: badges
-          token: ${{ secrets.GITHUB_TOKEN }}
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: phpinsights
+#          path: badges
+#          token: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Checkout repository
 #        uses: actions/checkout@v3
