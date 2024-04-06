@@ -1,5 +1,5 @@
 # String Guard
-![alt text](/badges/like.svg)
+![alt text](/badges/coverage.svg)
 
 [![Test Coverage](https://raw.githubusercontent.com/yormy/string-guard/master/badge-coverage.svg)](...)
 
