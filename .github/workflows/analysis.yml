@@ -6,8 +6,6 @@ jobs:
   phpstan:
     runs-on: ubuntu-latest
 
-
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -70,7 +68,7 @@ jobs:
         run: "php badges.php"
 
       - name: php
-        run: "wget https://img.shields.io/badge/any_text-you_like-blue -P badges/like.svg"
+        run: "wget https://img.shields.io/badge/any_text-you_like-blue -O badges/like.svg"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
@@ -80,5 +78,7 @@ jobs:
       - name: upload
         # Commit all changed files back to the repository
         uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Badges
 
 
