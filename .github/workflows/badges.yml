@@ -42,11 +42,12 @@ jobs:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
 
-      - name: Download test results
+      - name: Download artifact Linux GCC
         uses: dawidd6/action-download-artifact@v2
         with:
+          workflow: analysis.yml
           name: phpinsights
-          workflow: ${{ github.eve.t.workflow_run.workflow_id }}
+          path: phpinsights
 
 
 #      - name: Download test results
