@@ -54,5 +54,5 @@ jobs:
         # Commit all changed files back to the repository
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          file_pattern: '*.svg *.txt *.zip'
+          file_pattern: '*.svg *.txt *.zip *.json'
           commit_message: Badges
