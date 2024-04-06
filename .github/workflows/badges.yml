@@ -28,8 +28,8 @@ jobs:
         with:
           name: phpinsights
 
-      - name: 'Unzip artifact'
-        run: unzip phpinsights.zip
+#      - name: 'Unzip artifact'
+#        run: unzip phpinsights.zip
 
       - name: Checkout repository
         uses: actions/checkout@v3
