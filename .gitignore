@@ -10,3 +10,4 @@ psalm-report.txt
 vendor
 .php-cs-fixer.cache
 build
+test.json
