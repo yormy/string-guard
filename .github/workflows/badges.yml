@@ -21,8 +21,8 @@ jobs:
 #        run: unzip phpinsights.zip
         uses: actions/download-artifact@v4
         with:
-          name: my-artifact
-          path: your/destination/dir
+          name: phpinsights
+          path: badges
           token: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Checkout repository
