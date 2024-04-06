@@ -2,7 +2,7 @@
 
 echo 'badges';
 
-$path = './badges/phpinsights.json';
+$path = './badges/phpinsights.json11111';
 if (!file_exists($path))
 {
     exec("wget https://img.shields.io/badge/test_badge_coverage-missing-red -O badges/coverage.svg");
