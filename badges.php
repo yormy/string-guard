@@ -1,2 +1,3 @@
 <?php
-echo "badges";
+
+echo 'badges';

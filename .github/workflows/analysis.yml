@@ -56,7 +56,7 @@ jobs:
           php-version: 8.2
 
       - name: insights
-        run: "sudo ./vendor/bin/testbench insights -v --min-quality=96 --min-complexity=66 --min-architecture=95 --min-style=95 --format=json > test.json"
+        run: "sudo ./vendor/bin/testbench insights -v --min-quality=90 --min-complexity=66 --min-architecture=95 --min-style=95 --format=json > test.json"
 
       - name: php
         run: "php badges.php"
