@@ -1,11 +1,6 @@
-name: Badges
+name: badge
 
-on:
-  workflow_run:
-    workflows: [analysis]
-    branches: [master]
-    types:
-      - completed
+on: [push]
 
 jobs:
   deploy:
