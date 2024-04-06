@@ -36,7 +36,7 @@ jobs:
         with:
           name: phpinsights
           path: badges
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout repository
         uses: actions/checkout@v3
