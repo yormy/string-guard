@@ -16,6 +16,11 @@ jobs:
       contents: write
 
     steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v4
+        with:
+          name: phpinsights
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -35,11 +40,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: phpinsights
 
       - name: php
         run: "php badges.php"
