@@ -5,7 +5,7 @@ echo 'badges';
 $path = './badges/phpinsights.json';
 if (!file_exists($path))
 {
-    $file = 'badges/debug.txt';
+    $file = 'badges/debug1.txt';
     file_put_contents($file, getcwd(), FILE_APPEND | LOCK_EX);
 
 
