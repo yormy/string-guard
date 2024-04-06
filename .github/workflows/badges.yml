@@ -16,14 +16,15 @@ jobs:
       contents: write
 
     steps:
+      - name: deplo
 #      - name: 'Unzip artifact'
 #        run: unzip phpinsights.zip
-
-      - name: Download build artifact from triggered workflow
-        uses: dawidd6/action-download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
-          name: phpinsights
-#
+          name: my-artifact
+          path: your/destination/dir
+          token: ${{ secrets.GITHUB_TOKEN }}
+
 #      - name: Checkout repository
 #        uses: actions/checkout@v3
 #
