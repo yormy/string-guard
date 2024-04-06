@@ -27,11 +27,11 @@ jobs:
 #      - name: 'Unzip artifact'
 #        run: unzip phpinsights.zip
 
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: phpinsights
-#          path: badges
-#          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/download-artifact@v4
+        with:
+          name: phpinsights
+          path: badges
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Checkout repository
 #        uses: actions/checkout@v3
@@ -53,8 +53,8 @@ jobs:
 #        with:
 #          php-version: 8.2
 #
-#      - name: php
-#        run: "php badges.php"
+      - name: get
+        run: "wget https://img.shields.io/badge/test_badge_coverage-missing-red -O badges/coverage.svg""
 
       - name: upload
         # Commit all changed files back to the repository
