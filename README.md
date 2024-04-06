@@ -1,5 +1,5 @@
 # String Guard
-![](https://byob.yarr.is/yormy/string-guard/time)
+![alt text](/badges/like.svg)
 
 [![Test Coverage](https://raw.githubusercontent.com/yormy/string-guard/master/badge-coverage.svg)](...)
 
