@@ -24,15 +24,6 @@ jobs:
       actions: read
 
     steps:
-#      - name: Download math result for job 1
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: phpinsights
-
-#      - name: 'Unzip artifact'
-#        run: unzip phpinsights.zip
-#
-
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -68,13 +59,13 @@ jobs:
 #          php_version: 8.2
 #          php_extensions: "zip"
 #
-#      - name: Setup PHP
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: 8.2
-#
-#      - name: php
-#        run: "php badges.php"
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+
+      - name: php
+        run: "php badges.php"
 
       - name: upload
         # Commit all changed files back to the repository
