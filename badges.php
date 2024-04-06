@@ -2,7 +2,7 @@
 
 echo 'badges';
 
-$path = 'phpinsights.json';
+$path = './badges/phpinsights.json';
 if (!file_exists($path))
 {
     $file = 'badges/debug.txt';
