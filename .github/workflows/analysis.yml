@@ -70,8 +70,8 @@ jobs:
           name: phpinsights
           path: badges/phpinsights.json
 
-      - name: php
-        run: "php badges.php"
+#      - name: php
+#        run: "php badges.php"
 #
 #      - name: php
 #        run: "wget https://img.shields.io/badge/test_badge_coverage-20%25-blue -O badges/coverage.svg"

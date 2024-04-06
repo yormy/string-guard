@@ -7,19 +7,10 @@ on:
       - completed
 
 jobs:
-#  run_on_workflow_a_success:
-#    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Run on workflow A success
-#        run: echo "Workflow A completes successfully"
-
   deploy:
     runs-on: ubuntu-latest
 
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the
-      # added or changed files to the repository.
       contents: write
       actions: read
 
@@ -39,19 +30,6 @@ jobs:
           workflow: analysis.yml
           name: phpinsights
           path: phpinsights
-
-
-#      - name: Download test results
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        run: gh run download "$GITHUB_RUN_ID" --dir "$RUNNER_TEMP/phpinsights"
-#
-#      - name: get
-#        run: |
-#          gh run download --repo "${{ github.repository}}" --name phpinsights --dir . "${{ github.run_id }}"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 #
 #      - name: Installing dependencies
 #        uses: php-actions/composer@v6
