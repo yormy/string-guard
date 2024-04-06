@@ -1,4 +1,5 @@
 # String Guard
+![](https://byob.yarr.is/yormy/string-guard/time)
 
 [![Test Coverage](https://raw.githubusercontent.com/yormy/string-guard/master/badge-coverage.svg)](...)
 
