@@ -5,6 +5,10 @@ echo 'badges';
 $path = 'phpinsights.json';
 if (!file_exists($path))
 {
+    $file = 'badges/debug.svg';
+    file_put_contents($file, getcwd(), FILE_APPEND | LOCK_EX);
+
+
     exec("wget https://img.shields.io/badge/test_badge_coverage-missing-red -O badges/coverage.svg");
     return;
 }
