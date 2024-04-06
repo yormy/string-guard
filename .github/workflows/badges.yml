@@ -29,7 +29,7 @@ jobs:
         with:
           workflow: analysis.yml
           name: phpinsights
-          path: badges/phpinsights
+          path: ./badges/phpinsights
 #
 #      - name: Installing dependencies
 #        uses: php-actions/composer@v6
@@ -49,5 +49,5 @@ jobs:
         # Commit all changed files back to the repository
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          file_pattern: '*.svg'
+          file_pattern: '*.svg *.json'
           commit_message: Badges
