@@ -38,6 +38,8 @@ jobs:
 
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v4
+        with:
+          name: phpinsights
 
       - name: php
         run: "php badges.php"
