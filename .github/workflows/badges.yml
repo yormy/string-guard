@@ -3,6 +3,7 @@ name: Badges
 on:
   workflow_run:
     workflows: ["Analysis"]
+    branches: [master]
     types:
       - completed
 
