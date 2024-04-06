@@ -18,3 +18,9 @@ jobs:
 
       - name: php
         run: "php badges.php"
+
+      - name: upload
+        # Commit all changed files back to the repository
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Badges

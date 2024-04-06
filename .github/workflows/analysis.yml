@@ -62,18 +62,18 @@ jobs:
           php-version: 8.2
 
       - name: insights
-        run: "sudo ./vendor/bin/testbench insights -v --min-quality=90 --min-complexity=66 --min-architecture=95 --min-style=95 --format=json > test.json"
+        run: "sudo ./vendor/bin/testbench insights -v --min-quality=90 --min-complexity=66 --min-architecture=95 --min-style=95 --format=json > phpinsights.json"
 
-      - name: php
-        run: "php badges.php"
+#      - name: php
+#        run: "php badges.php"
+#
+#      - name: php
+#        run: "wget https://img.shields.io/badge/test_badge_coverage-20%25-blue -O badges/coverage.svg"
 
-      - name: php
-        run: "wget https://img.shields.io/badge/test_badge_coverage-20%25-blue -O badges/coverage.svg"
-
-      - name: upload
-        # Commit all changed files back to the repository
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Badges
+#      - name: upload
+#        # Commit all changed files back to the repository
+#        uses: stefanzweifel/git-auto-commit-action@v5
+#        with:
+#          commit_message: Badges
 
 
