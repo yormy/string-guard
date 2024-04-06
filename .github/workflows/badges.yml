@@ -27,6 +27,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: phpinsights
+          github-token: ${{ github.token }}
 
 #      - name: 'Unzip artifact'
 #        run: unzip phpinsights.zip
