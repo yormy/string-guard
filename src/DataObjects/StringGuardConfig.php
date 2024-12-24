@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yormy\StringGuard\DataObjects;
 
 use Yormy\StringGuard\Exceptions\InvalidConfigException;
 
 class StringGuardConfig
 {
-    private $includes;
-    private $excludes;
+    private array $includes;
+
+    private array $excludes;
 
     public static function make(string $string, array $conditions = [], array $data = []): array
     {
-        if (!$string) {
+        if (! $string) {
             throw new InvalidConfigException('Guarded String must be specified');
         }
 
@@ -27,12 +30,12 @@ class StringGuardConfig
 
     public static function fromArray(array $config): StringGuardConfig
     {
-        $object =  new StringGuardConfig();
+        $object = new StringGuardConfig();
 
         if (isset($config['include'])) {
             $object->includes = self::upperCase($config['include']);
         } else {
-            throw new InvalidConfigException('Include must be specified, use ['*'] to include all');
+            throw new InvalidConfigException('Include must be specified, use [' * '] to include all');
         }
 
         if (isset($config['exclude'])) {
@@ -42,12 +45,12 @@ class StringGuardConfig
         return $object;
     }
 
-    public function getIncludes()
+    public function getIncludes(): array
     {
         return $this->includes;
     }
 
-    public function getExcludes()
+    public function getExcludes(): array
     {
         return $this->excludes;
     }

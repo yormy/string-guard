@@ -85,7 +85,7 @@ class IncludeTest extends TestCase
             ],
             'exclude' => [
                 StringGuardConfig::make('exclude_*', [[], 'delete']),
-            ]
+            ],
         ];
 
     }

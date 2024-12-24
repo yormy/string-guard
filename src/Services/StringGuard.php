@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yormy\StringGuard\Services;
 
 use Yormy\StringGuard\DataObjects\StringGuardConfig;
@@ -20,10 +22,11 @@ class StringGuard
     {
         $configValue = [];
         // if not specified, then there is no data
-        $found =  self::testInclude($stringToCheck, $conditionsTest, $filterConfig, false, $configValue);
+        $found = self::testInclude($stringToCheck, $conditionsTest, $filterConfig, false, $configValue);
         if ($found) {
             return $configValue['ADDITIONALS'];
         }
+
         return [];
     }
 
@@ -52,8 +55,7 @@ class StringGuard
             foreach ($urlConfig as $url => $data) {
                 $urlFound = fnmatch($url, $stringToCheck);
                 if ($urlFound) {
-
-                    $conditionFound = self::conditionMatchFound($data['CONDITIONS'],$conditionsTest);
+                    $conditionFound = self::conditionMatchFound($data['CONDITIONS'], $conditionsTest);
                     if ($conditionFound) {
                         $conditionMatch = true;
                         $configFound = $data;
@@ -82,8 +84,7 @@ class StringGuard
             return true;
         }
 
-        foreach ($config as $configName => $configValues)
-        {
+        foreach ($config as $configName => $configValues) {
             if (isset($toTest[$configName])) {
                 $valueToTest = $toTest[$configName];
 
@@ -92,7 +93,7 @@ class StringGuard
                         $found = fnmatch($configValue, $valueToTest);
                     } catch (\Throwable $e) {
                         if (is_array($configValue)) {
-                            $message = 'configValue cannot be an array: '. json_encode($configValue);
+                            $message = 'configValue cannot be an array: '.json_encode($configValue);
                             $message .= 'It might be that you passed additional data as second argument instead of third';
                             throw new \Exception($message);
                         }

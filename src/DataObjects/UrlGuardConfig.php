@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yormy\StringGuard\DataObjects;
 
 class UrlGuardConfig extends StringGuardConfig
@@ -11,6 +13,7 @@ class UrlGuardConfig extends StringGuardConfig
         }
 
         $urlConditions = ['methods' => $conditions];
+
         return parent::make($string, $urlConditions, $data);
     }
 }

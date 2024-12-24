@@ -79,7 +79,7 @@ class IncludeConditionsTest extends TestCase
     private function makeConfig(): array
     {
         $conditions = [
-            'methods' => ['post', 'delete']
+            'methods' => ['post', 'delete'],
         ];
 
         $data = ['test' => 'test'];
@@ -90,7 +90,7 @@ class IncludeConditionsTest extends TestCase
             ],
             'exclude' => [
                 StringGuardConfig::make('exclude_*', $conditions, $data),
-            ]
+            ],
         ];
 
     }
